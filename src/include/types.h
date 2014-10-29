@@ -1,5 +1,5 @@
 // This is the cross-platform and cross-architecture standard types file. This
-// header is automatically included by CAHAL.h.
+// header is automatically included by CPCommon.h.
 
 #ifndef _TYPES_H_
 #define _TYPES_H_
@@ -21,6 +21,8 @@
 
   typedef char          CHAR;
   typedef unsigned char UCHAR;
+
+  typedef size_t    SIZE;
 #endif
 
 #endif /* _TYPES_H_ */
