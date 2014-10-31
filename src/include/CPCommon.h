@@ -8,8 +8,8 @@
 /**
  *  Cross-platform wrapper for snprintf
  *
- *  @param outString  The buffer filled with the formatted string. Must be at
- *                    least of length inStringLength.
+ *  @param  ioString  Pointer to a buffer that will be created, populated, and
+                      returned.
  *  @param  inStringLength  The length of the buffer, outString
  *  @param  inStringFormat  The printf formatted format string
  *  @param  ...       The variable length argument list to use in formatting
@@ -20,10 +20,11 @@
  */
 INT32
   cpc_snprintf  (
-                  CHAR* restrict outString,
+                  CHAR** ioString,
                   SIZE inStringLength,
-                  const CHAR* restrict inStringFormat,
+                  const CHAR* inStringFormat,
                   ...
                  );
 
 #endif /* __CPCOMMON_H_ */
+

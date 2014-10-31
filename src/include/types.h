@@ -9,7 +9,11 @@
 #include <stdint.h>
 #include <string.h>
 
-#ifdef MACOSX
+#include "target.h"
+
+#ifdef __OSX__
+  #include "darwin/function_map.h"
+
   typedef int8_t    INT8;
   typedef int16_t   INT16;
   typedef int32_t   INT32;
@@ -26,3 +30,4 @@
 #endif
 
 #endif /* _TYPES_H_ */
+
