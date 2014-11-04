@@ -8,7 +8,7 @@
     #define __WIN32__
   #endif
 #elif __APPLE__
-    #include "TargetConditionals.h"
+    #include <TargetConditionals.h>
 
     #if TARGET_IPHONE_SIMULATOR
       #define __IOS_SIM__
