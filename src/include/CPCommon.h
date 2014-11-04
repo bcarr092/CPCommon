@@ -1,4 +1,4 @@
-  #ifndef __CPCOMMON_H_
+#ifndef __CPCOMMON_H_
 #define __CPCOMMON_H_
 
 #include <stdio.h>
@@ -23,18 +23,31 @@
  *          specific description for vsnprintf (or equivalent)
  */
 INT32
-  cpc_snprintf  (
-                  CHAR**        io_string,
-                  USIZE         in_string_length,
-                  const CHAR*   in_string_format,
-                  ...
-                 );
+cpc_snprintf  (
+               CHAR**        io_string,
+               USIZE         in_string_length,
+               const CHAR*   in_string_format,
+               ...
+               );
+
+INT32
+cpc_printf  (
+             const CHAR* in_string_format,
+             ...
+);
 
 INT32
   cpc_vprintf  (
                 const CHAR* in_string_foramt,
                 va_list     in_parameters
               );
+
+INT32
+cpc_fprintf (
+             FILE* in_handle,
+             const CHAR* in_string_format,
+             ...
+             );
 
 INT32
   cpc_vfprintf (

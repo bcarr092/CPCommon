@@ -3,6 +3,12 @@
 
 #include "cpcommon.h"
 
+#define CPC_LOG_LEVEL_TRACE_STRING  "TRACE"
+#define CPC_LOG_LEVEL_DEBUG_STRING  "DEBUG"
+#define CPC_LOG_LEVEL_INFO_STRING   "INFO"
+#define CPC_LOG_LEVEL_WARN_STRING   "WARN"
+#define CPC_LOG_LEVEL_ERROR_STRING  "ERROR"
+
 enum cpc_log_levels
 {
   CPC_LOG_LEVEL_TRACE = 0,
@@ -15,15 +21,23 @@ enum cpc_log_levels
 typedef INT32 CPC_LOG_LEVEL;
 
 CPC_LOG_LEVEL
-  cpc_log  (
-              CPC_LOG_LEVEL in_log_level,
-              CHAR*         in_log_format,
-              ...
-           );
+cpc_log  (
+          CPC_LOG_LEVEL in_log_level,
+          CHAR*         in_log_format,
+          ...
+          );
 
 void
-  cpc_log_set_log_level (
-                          CPC_LOG_LEVEL in_new_log_level
-                        );
+cpc_log_set_log_level (
+                       CPC_LOG_LEVEL in_new_log_level
+                       );
+
+CPC_LOG_LEVEL
+cpc_log_get_current_log_level( void );
+
+char*
+cpc_log_level_to_string (
+                         CPC_LOG_LEVEL log_level
+                         );
 
 #endif /* __LOG_H__ */

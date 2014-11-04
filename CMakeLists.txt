@@ -29,7 +29,7 @@ message( STATUS "C header files found: ${HEADERS}" )
 
 include_directories( ${INCLUDE_DIR} )
 
-add_library( ${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS} )
+add_library( ${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS} )
 
 install (
           TARGETS ${PROJECT_NAME}
@@ -52,3 +52,14 @@ set( EXTRA_LIBS ${CORE_FOUNDATION_FRAMEWORK} ${CORE_AUDIO_FRAMEWORK} )
 message( STATUS "Framework libraries: ${EXTRA_LIBS}" )
 
 target_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
+
+set( DARWINHELPER_INCLUDE_DIR "${darwinhelper_SOURCE_DIR}/src/include" )
+
+message (
+  STATUS
+  "Working with darwinhelper source directory: ${DARWINHELPER_INCLUDE_DIR}"
+        )
+
+include_directories( ${DARWINHELPER_INCLUDE_DIR} )
+
+target_link_libraries( ${PROJECT_NAME} darwinhelper )
