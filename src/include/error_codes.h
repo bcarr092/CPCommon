@@ -16,7 +16,7 @@ enum cpc_error_codes
 };
 
 /*! \var    CPC_ERROR_CODE
-    \brief  A type definition for the loggers errors
+    \brief  Type definition for the loggers errors
  */
 typedef INT32 CPC_ERROR_CODE;
 

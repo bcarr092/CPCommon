@@ -63,3 +63,13 @@ install(  FILES ${WRAPPERS} DESTINATION
 enable_testing()
 
 add_test( ${PROJECT_NAME} "${PROJECT_BINARY_DIR}/test.py" )
+
+# These are platform specific build instructions, this needs to be cleaned up
+find_library( CORE_FOUNDATION_FRAMEWORK CoreFoundation )
+find_library( CORE_AUDIO_FRAMEWORK CoreAudio )
+
+set( EXTRA_LIBS ${CORE_FOUNDATION_FRAMEWORK} ${CORE_AUDIO_FRAMEWORK} )
+
+message( STATUS "Framework libraries: ${EXTRA_LIBS}" )
+
+swig_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
