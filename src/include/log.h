@@ -20,6 +20,13 @@
 #define CPC_LOG_STRING( in_log_level, in_string ) \
           cpc_log( in_log_level, __FILE__, __LINE__, in_string )
 
+/*! \def    CPC_ERROR
+    \breif  Shorthand macro to log an error. Simply calls CPC_LOG with the error
+            log level.
+ */
+#define CPC_ERROR( in_log_format, ... ) \
+  cpc_log( CPC_LOG_LEVEL_ERROR, __FILE__, __LINE__, in_log_format, __VA_ARGS__ )
+
 /*! \def    CPC_LOG
     \brief  Logging for function that provides a printf-like interface. This is
             the logging function that should be called as it will preserve the

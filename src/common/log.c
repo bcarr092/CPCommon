@@ -1,6 +1,6 @@
 #include "log.h"
 
-CPC_LOG_LEVEL current_log_level = CPC_LOG_LEVEL_ERROR;
+CPC_LOG_LEVEL current_log_level = CPC_LOG_LEVEL_TRACE;
 
 CPC_ERROR_CODE
 cpc_log  (
