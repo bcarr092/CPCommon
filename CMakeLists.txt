@@ -40,7 +40,7 @@ install (
 install( FILES ${HEADERS} DESTINATION "${INSTALL_DIR}/include/${PROJECT_NAME}" )
 
 # Build test suite as well
-add_subdirectory( test )
+#add_subdirectory( test )
 
 enable_testing()
 
