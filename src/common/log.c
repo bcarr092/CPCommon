@@ -5,6 +5,8 @@ CPC_LOG_LEVEL current_log_level = CPC_LOG_LEVEL_TRACE;
 CPC_ERROR_CODE
 cpc_log  (
           CPC_LOG_LEVEL in_log_level,
+          CHAR*         in_file,
+          INT32         in_line_number,
           CHAR*         in_log_format,
           ...
           )
@@ -27,7 +29,7 @@ cpc_log  (
                          handle,
                          "%s %s:%s:%d[%s]",
                          __DATE__, __TIME__,
-                         __FILE__, __LINE__,
+                         in_file, in_line_number,
                          cpc_log_level_to_string( in_log_level )
                          );
     
@@ -47,16 +49,24 @@ cpc_log  (
   return( error );
 }
 
-void
+CPC_ERROR_CODE
 cpc_log_set_log_level (
                        CPC_LOG_LEVEL in_new_log_level
                        )
 {
+  CPC_ERROR_CODE error  = CPC_ERROR_CODE_NO_ERROR;
+  
   if( in_new_log_level >= CPC_LOG_LEVEL_TRACE
       && in_new_log_level <= CPC_LOG_LEVEL_ERROR )
   {
     current_log_level = in_new_log_level;
   }
+  else
+  {
+    error = CPC_ERROR_CODE_INVALID_LOG_LEVEL;
+  }
+  
+  return( error );
 }
 
 CPC_LOG_LEVEL
@@ -67,10 +77,10 @@ cpc_log_get_current_log_level( void )
 
 char*
 cpc_log_level_to_string (
-                         CPC_LOG_LEVEL log_level
+                         CPC_LOG_LEVEL in_log_level
                          )
 {
-  switch( log_level )
+  switch( in_log_level )
   {
     case CPC_LOG_LEVEL_TRACE:
       return( CPC_LOG_LEVEL_TRACE_STRING );
@@ -83,6 +93,6 @@ cpc_log_level_to_string (
     case CPC_LOG_LEVEL_ERROR:
       return( CPC_LOG_LEVEL_ERROR_STRING );
     default:
-      return( "Invalid level" );
+      return( NULL );
   }
 }

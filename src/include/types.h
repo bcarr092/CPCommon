@@ -12,6 +12,8 @@
 #include "target.h"
 
 #ifdef __OSX__
+  #include <CoreFoundation/CoreFoundation.h>
+
   #include "darwin/function_map.h"
 
   typedef int8_t    INT8;
@@ -22,6 +24,9 @@
   typedef uint16_t  UINT16;
   typedef uint32_t  UINT32;
   typedef uint64_t  UINT64;
+
+  typedef Float32   FLOAT32;
+  typedef Float64   FLOAT64;
 
   typedef char          CHAR;
   typedef unsigned char UCHAR;
