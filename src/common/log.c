@@ -1,4 +1,4 @@
-#include "log.h"
+#include "log_functions.h"
 
 CPC_LOG_LEVEL current_log_level = CPC_LOG_LEVEL_TRACE;
 

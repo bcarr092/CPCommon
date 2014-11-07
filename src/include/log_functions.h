@@ -1,18 +1,12 @@
-/*! \file   log.h
-    \brief  Logging function that allows for messages to be logged at multiple
-            different logging levels.
+/*! \file   log_functions.h
+    \brief  Logging functions that allow for messages to be logged at multiple
+            different logging levels are defined in this file.
  */
 #ifndef __LOG_H__
 #define __LOG_H__
 
 #include "cpcommon.h"
 #include "error_codes.h"
-
-#define CPC_LOG_LEVEL_TRACE_STRING  "TRACE"
-#define CPC_LOG_LEVEL_DEBUG_STRING  "DEBUG"
-#define CPC_LOG_LEVEL_INFO_STRING   "INFO"
-#define CPC_LOG_LEVEL_WARN_STRING   "WARN"
-#define CPC_LOG_LEVEL_ERROR_STRING  "ERROR"
 
 /*! \def    CPC_LOG_STRING
     \brief  Logging function for strings. Used to log static messages.
@@ -21,7 +15,7 @@
           cpc_log( in_log_level, __FILE__, __LINE__, in_string )
 
 /*! \def    CPC_ERROR
-    \breif  Shorthand macro to log an error. Simply calls CPC_LOG with the error
+    \brief  Shorthand macro to log an error. Simply calls CPC_LOG with the error
             log level.
  */
 #define CPC_ERROR( in_log_format, ... ) \
@@ -34,26 +28,6 @@
  */
 #define CPC_LOG( in_log_level, in_log_format, ... ) \
           cpc_log( in_log_level, __FILE__, __LINE__, in_log_format, __VA_ARGS__ )
-
-/*! \enum   cpc_log_levels
-    \brief  The supported log levels. Trace is the lowest (0), error is the
-            highest (4). When the log level is set only CPC_LOG calls with
-            a log level equal to or above the current log level will be
-            printed.
- */
-enum cpc_log_levels
-{
-  CPC_LOG_LEVEL_TRACE = 0,
-  CPC_LOG_LEVEL_DEBUG,
-  CPC_LOG_LEVEL_INFO,
-  CPC_LOG_LEVEL_WARN,
-  CPC_LOG_LEVEL_ERROR
-};
-
-/*! \var    CPC_LOG_LEVEL
-    \brief  A type definition for the log level.
- */
-typedef INT32 CPC_LOG_LEVEL;
 
 /*! \fn     CPC_ERROR_CODE cpc_log  (
               CPC_LOG_LEVEL in_log_level,

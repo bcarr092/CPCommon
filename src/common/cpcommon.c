@@ -84,4 +84,52 @@ cpc_vfprintf (
   return( return_value );
 }
 
+CHAR*
+cpc_convert_code_to_cstring  (
+                              UINT32 in_code
+                              )
+{
+  CHAR* code = NULL;
+  
+  if( noErr != in_code )
+  {
+    code = ( CHAR* ) malloc( CPC_CODE_STRING_LENGTH * sizeof( CHAR ) );
+    
+    memset( code, 0, CPC_CODE_STRING_LENGTH * sizeof( CHAR ) );
+    
+    * ( UINT32 * ) ( code + 1 ) = CFSwapInt32HostToBig( in_code );
+    
+    if( isprint( code[ 1 ] ) && isprint( code[ 2 ] )
+       && isprint( code[ 3 ] ) && isprint( code[ 4 ] ) )
+    {
+      code[ 0 ] = code[ 5 ] = '\'';
+      code[ 6 ] = '\0';
+    }
+  }
+  
+  return( code );
+}
 
+void
+cpc_print_code (
+                CPC_LOG_LEVEL  in_log_level,
+                CHAR*          in_file,
+                INT32          in_line_number,
+                OSStatus       in_code
+                )
+{
+  CHAR* cstring_code = cpc_convert_code_to_cstring( in_code );
+  
+  if( NULL != cstring_code )
+  {
+    cpc_log (
+             in_log_level,
+             in_file,
+             in_line_number,
+             "Code: %s",
+             cstring_code
+             );
+    
+    free( cstring_code );
+  }
+}
