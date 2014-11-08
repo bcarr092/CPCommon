@@ -57,7 +57,7 @@ cpc_log_set_log_level (
   CPC_ERROR_CODE error  = CPC_ERROR_CODE_NO_ERROR;
   
   if( in_new_log_level >= CPC_LOG_LEVEL_TRACE
-      && in_new_log_level <= CPC_LOG_LEVEL_ERROR )
+      && in_new_log_level <= CPC_LOG_LEVEL_NO_LOGGING )
   {
     current_log_level = in_new_log_level;
   }
@@ -92,6 +92,8 @@ cpc_log_level_to_string (
       return( CPC_LOG_LEVEL_WARN_STRING );
     case CPC_LOG_LEVEL_ERROR:
       return( CPC_LOG_LEVEL_ERROR_STRING );
+    case CPC_LOG_LEVEL_NO_LOGGING:
+      return( CPC_LOG_LEVEL_NO_STRING );
     default:
       return( NULL );
   }
