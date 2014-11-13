@@ -5,6 +5,8 @@
 #ifndef __FUNCTION_MAP_H__
 #define __FUNCTION_MAP_H__
 
+#define CPC_ERRNO errno
+
 /*! \def    CPC_VSNPRINTF
     \brief  Macro that maps to the platform specific vsnprintf function.
  */
@@ -23,5 +25,26 @@
  */
 #define CPC_VFPRINTF( in_handle, in_string_format, inVarArgs ) \
           vfprintf( in_handle, in_string_format, inVarArgs )
+
+/*! \def    CPC_STRERROR
+    \brief  Macro that maps to the platform specific strerror function.
+ */
+#define CPC_STRERROR( in_error ) strerror( in_error )
+
+/*! \def    CPC_MALLOC
+    \brief  Macro that maps to the platform specific malloc function.
+ */
+#define CPC_MALLOC( in_buffer_size ) malloc( in_buffer_size )
+
+/*! \def    CPC_MEMSET
+    \brief  Macro that maps to the platform specific memset function.
+ */
+#define CPC_MEMSET( io_buffer, in_value, in_buffer_size ) \
+          memset( io_buffer, in_value, in_buffer_size )
+
+/*! \def    CPC_FREE
+    \brief  Macro that maps to the platfrom specific free function.
+ */
+#define CPC_FREE( in_buffer ) free( in_buffer )
 
 #endif /* __FUNCTION_MAP_H__ */

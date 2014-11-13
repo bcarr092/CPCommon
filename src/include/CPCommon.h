@@ -149,9 +149,6 @@ cpc_vfprintf (
             codes (UINT32) that have four character representations, i.e. each
             byte is printable.
 
-    \note   This code is taken from "Learning Core Audio" by Adamson and Avila
-            pg. 82
-
     \param  in_log_level  The log level to log the converted string
     \param  in_file       The file name to display in the log
     \param  in_line_number  The line number to be displayed in the log
@@ -160,16 +157,16 @@ cpc_vfprintf (
  */
 void
 cpc_print_code (
-                CPC_LOG_LEVEL  in_log_level,
+                cpc_log_level  in_log_level,
                 CHAR*          in_file,
                 INT32          in_line_number,
-                OSStatus       in_code
+                UINT32         in_code
                 );
 
 /*! \fn     CHAR* cpc_convert_code_to_cstring  (
               UINT32 in_code
             )
- \brief     Converts in_code to its string representation if possible and
+    \brief  Converts in_code to its string representation if possible and
             returns the newly created string. This function tries to convert
             UINT32 codes that have four character representations. This function
             will create a new CHAR*, populate it with the string representation
@@ -177,12 +174,9 @@ cpc_print_code (
             the string. A string representation is only generated when possible,
             i.e. when each character is printable.
  
- \todo      This function uses an OSX API call, i.e. isprint, which needs to be
-            replaced with a cross-platform API call.
- 
- \param     in_code The code to convert to a c-style string, iff all bytes of
+    \param  in_code The code to convert to a c-style string, iff all bytes of
                     in_code are printable ASCII characters.
- \return    A newly created string representation of in_code if possible. The
+    \return A newly created string representation of in_code if possible. The
             caller must free the returned string. A NULL string is returned if
             all the bytes of in_code are not printable ASCII.
  */
@@ -190,6 +184,65 @@ CHAR*
 cpc_convert_code_to_cstring  (
                               UINT32 in_code
                               );
+
+/*! \fn     UINT32 cpc_errno( void )
+    \brief  Simply returns the system specific error number field.
+ 
+    \return The platform specific errno.
+ */
+UINT32
+cpc_errno( void );
+
+/*! \fn     CHAR* cpc_strerror  (
+              UINT32 in_error
+            )
+    \brief  Wraps the platform-specific strerror function. Used to translate
+            errors in system calls to a string.
+ 
+    \param  in_error  The error to stringify.
+    \return The string representation of in_error.
+ */
+CHAR*
+cpc_strerror  (
+               UINT32 in_error
+               );
+
+/*! \fn     cpc_error_code cpc_safe_malloc (
+              void** out_pointer,
+              SSIZE  in_pointer_size
+            )
+    \brief  Creates a safe implementation of malloc. This function will safely
+            allocate a new memory buffer, zero it out and return it. If either
+            the malloc or memset fail this function will return an error.
+            CPC_ERROR_CODE_NO_ERROR is returned otherwise.
+    
+    \param  out_pointer Upon return out_pointer will point to a newly
+                        allocated buffer or NULL if an error occurred.
+    \param  in_buffer_size  The size of the buffer to create.
+    \return CPC_ERROR_CODE_NO_ERROR(0) if no error has occurred, an error code
+            otherwise.
+ */
+cpc_error_code
+cpc_safe_malloc (
+                 void** out_pointer,
+                 SSIZE  in_buffer_size
+                 );
+
+/*! \fn     cpc_error_code cpc_safe_free (
+              void** io_pointer
+            )
+    \brief  This function is a safe impelementation of free. This function
+            will free io_pointer if it is a valid pointer and set it to NULL.
+            If an error occurs the appropriate error code will be returned.
+    
+    \param  io_pointer  A pointer to the buffer to be freed.
+    \return CPC_ERROR_CODE_NO_ERROR(0) if no error has occurred, an error code
+            otherwise.
+ */
+cpc_error_code
+cpc_safe_free (
+               void** io_pointer
+               );
 
 #endif /* __CPCOMMON_H_ */
 

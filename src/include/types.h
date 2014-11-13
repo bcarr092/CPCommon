@@ -35,5 +35,10 @@
   typedef size_t        USIZE;
 #endif
 
+#define TRUE  1
+#define FALSE 0
+
+typedef UINT8 BOOL;
+
 #endif /* _TYPES_H_ */
 

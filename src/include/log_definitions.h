@@ -32,6 +32,6 @@ enum cpc_log_levels
 /*! \var    CPC_LOG_LEVEL
     \brief  A type definition for the log level.
  */
-typedef INT32 CPC_LOG_LEVEL;
+typedef INT32 cpc_log_level;
 
 #endif  /*  _LOG_DEFINITIONS_H__  */
