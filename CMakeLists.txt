@@ -24,7 +24,12 @@ list( APPEND HEADERS "${INCLUDE_DIR}/target.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/log_functions.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/log_definitions.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/error_codes.h" )
-list( APPEND HEADERS "${INCLUDE_DIR}/darwin/function_map.h" )
+
+if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
+  list( APPEND HEADERS "${INCLUDE_DIR}/darwin/function_map.h" )
+else()
+  message( FATAL "Unsupported platform: ${PLATFORM}" )
+endif()
 
 message( STATUS "C source files found: ${SOURCES}" )
 message( STATUS "C header files found: ${HEADERS}" )
@@ -32,6 +37,19 @@ message( STATUS "C header files found: ${HEADERS}" )
 include_directories( ${INCLUDE_DIR} )
 
 add_library( ${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS} )
+
+if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
+  target_link_libraries( ${PROJECT_NAME} darwinhelper )
+
+  set( DARWINHELPER_INCLUDE_DIR "${darwinhelper_SOURCE_DIR}/src/include" )
+
+  message (
+    STATUS
+    "Working with darwinhelper source directory: ${DARWINHELPER_INCLUDE_DIR}"
+          )
+  
+  include_directories( ${DARWINHELPER_INCLUDE_DIR} )
+endif()
 
 install (
           TARGETS ${PROJECT_NAME}
@@ -67,22 +85,4 @@ if( DOXYGEN_FOUND )
 endif(DOXYGEN_FOUND)
 
 # These are platform specific build instructions, this needs to be cleaned up
-find_library( CORE_FOUNDATION_FRAMEWORK CoreFoundation )
-find_library( CORE_AUDIO_FRAMEWORK CoreAudio )
 
-set( EXTRA_LIBS ${CORE_FOUNDATION_FRAMEWORK} ${CORE_AUDIO_FRAMEWORK} )
-
-message( STATUS "Framework libraries: ${EXTRA_LIBS}" )
-
-target_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
-
-set( DARWINHELPER_INCLUDE_DIR "${darwinhelper_SOURCE_DIR}/src/include" )
-
-message (
-  STATUS
-  "Working with darwinhelper source directory: ${DARWINHELPER_INCLUDE_DIR}"
-        )
-
-include_directories( ${DARWINHELPER_INCLUDE_DIR} )
-
-target_link_libraries( ${PROJECT_NAME} darwinhelper )

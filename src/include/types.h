@@ -11,7 +11,7 @@
 
 #include "target.h"
 
-#ifdef __OSX__
+#if defined( __OSX__ ) || defined( __IOS__ )
   #include <CoreFoundation/CoreFoundation.h>
 
   #include "darwin/function_map.h"
