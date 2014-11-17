@@ -47,4 +47,6 @@
  */
 #define CPC_FREE( in_buffer ) free( in_buffer )
 
+#define CPC_EXIT( in_exit_code )  exit( in_exit_code )
+
 #endif /* __FUNCTION_MAP_H__ */

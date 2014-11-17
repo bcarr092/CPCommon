@@ -244,5 +244,10 @@ cpc_safe_free (
                void** io_pointer
                );
 
+void
+cpc_exit  (
+           UINT32 in_exit_code
+           );
+
 #endif /* __CPCOMMON_H_ */
 

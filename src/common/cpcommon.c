@@ -238,3 +238,17 @@ cpc_safe_free (
     return( CPC_ERROR_CODE_NULL_POINTER );
   }
 }
+
+void
+cpc_exit  (
+           UINT32 in_exit_code
+           )
+{
+  CPC_LOG (
+           CPC_LOG_LEVEL_INFO,
+           "Exiting application with code 0x%x.",
+           in_exit_code
+           );
+  
+  CPC_EXIT( in_exit_code );
+}
