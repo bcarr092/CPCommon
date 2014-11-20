@@ -1,6 +1,6 @@
 #include "log_functions.h"
 
-cpc_log_level current_log_level = CPC_LOG_LEVEL_TRACE;
+static cpc_log_level g_current_log_level = CPC_LOG_LEVEL_TRACE;
 
 cpc_error_code
 cpc_log  (
@@ -23,7 +23,7 @@ cpc_log  (
     handle = stderr;
   }
 
-  if( current_log_level <= in_log_level )
+  if( g_current_log_level <= in_log_level )
   {
     error = cpc_fprintf (
                          handle,
@@ -68,7 +68,7 @@ cpc_log_buffer  (
     handle = stderr;
   }
   
-  if( current_log_level <= in_log_level )
+  if( g_current_log_level <= in_log_level )
   {
     error = cpc_fprintf (
                          handle,
@@ -117,7 +117,7 @@ cpc_log_set_log_level (
   if( in_new_log_level >= CPC_LOG_LEVEL_TRACE
       && in_new_log_level <= CPC_LOG_LEVEL_NO_LOGGING )
   {
-    current_log_level = in_new_log_level;
+    g_current_log_level = in_new_log_level;
   }
   else
   {
@@ -130,7 +130,7 @@ cpc_log_set_log_level (
 cpc_log_level
 cpc_log_get_current_log_level( void )
 {
-  return( current_log_level );
+  return( g_current_log_level );
 }
 
 char*

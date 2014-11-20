@@ -46,10 +46,10 @@
   typedef size_t        USIZE;
 #endif
 
-#define TRUE  1
-#define FALSE 0
+#define CPC_TRUE  1
+#define CPC_FALSE 0
 
-typedef UINT8 BOOL;
+typedef UINT8 CPC_BOOL;
 
 #endif /* _TYPES_H_ */
 

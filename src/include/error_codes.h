@@ -22,6 +22,9 @@
     \constant CPC_ERROR_CODE_MEMSET
                 Used by cpc_safe_malloc to indidate that the system call to
                 memset has failed.
+    \constant CPC_ERROR_CODE_INVALID_PERMISSIONS
+                Used when an operation cannot be performed because the correct
+                permissions have not been obtained.
  */
 enum cpc_error_codes
 {
@@ -30,7 +33,8 @@ enum cpc_error_codes
   CPC_ERROR_CODE_INVALID_LOG_LEVEL,
   CPC_ERROR_CODE_MALLOC,
   CPC_ERROR_CODE_MEMSET,
-  CPC_ERROR_CODE_APPLICATION_INTERRUPTED_IOS
+  CPC_ERROR_CODE_APPLICATION_INTERRUPTED_IOS,
+  CPC_ERROR_CODE_INVALID_PERMISSIONS
 };
 
 /*! \var    CPC_ERROR_CODE
