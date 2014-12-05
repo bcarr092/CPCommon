@@ -27,8 +27,24 @@ list( APPEND HEADERS "${INCLUDE_DIR}/error_codes.h" )
 
 if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
   list( APPEND HEADERS "${INCLUDE_DIR}/darwin/function_map.h" )
+elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
+  find_library  (
+                  MATH_LIB
+                  m
+                  HINTS "${CMAKE_FIND_ROOT_PATH}/usr/lib"
+                )
+
+  set (
+        EXTRA_LIBS
+        ${OPENSLES_LIB}
+        ${MATH_LIB}
+      )
+
+  message( STATUS "Android libraries: ${EXTRA_LIBS}" )
+
+  list( APPEND HEADERS "${INCLUDE_DIR}/android/function_map.h" )
 else()
-  message( FATAL "Unsupported platform: ${PLATFORM}" )
+  message( FATAL_ERROR "Unsupported platform: ${PLATFORM}" )
 endif()
 
 message( STATUS "C source files found: ${SOURCES}" )
@@ -49,6 +65,8 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
           )
   
   include_directories( ${DARWINHELPER_INCLUDE_DIR} )
+elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
+  #target_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
 endif()
 
 install (

@@ -249,5 +249,25 @@ cpc_exit  (
            UINT32 in_exit_code
            );
 
+cpc_error_code
+cpc_strnlen (
+    CHAR*   in_string,
+    SSIZE*  io_length
+            );
+
+cpc_error_code
+cpc_memcpy  (
+    void* out_destination,
+    void* in_source,
+    SSIZE in_num_bytes
+            );
+
+cpc_error_code
+cpc_safe_realloc  (
+    void**  io_pointer,
+    SSIZE   in_original_size,
+    SSIZE   in_new_size
+                  );
+
 #endif /* __CPCOMMON_H_ */
 

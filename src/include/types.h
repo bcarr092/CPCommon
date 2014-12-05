@@ -1,5 +1,7 @@
-// This is the cross-platform and cross-architecture standard types file. This
-// header is automatically included by CPCommon.h.
+/*! \file   types.h
+    \brief  This is the cross-platform and cross-architecture standard types file. This
+            header is automatically included by CPCommon.h.
+*/
 
 #ifndef _TYPES_H_
 #define _TYPES_H_
@@ -44,6 +46,31 @@
 
   typedef ssize_t       SSIZE;
   typedef size_t        USIZE;
+#elif defined( __ANDROID__ )
+  #include <errno.h>
+  #include <ctype.h>
+
+  #include <arpa/inet.h>
+
+  #include "android/function_map.h"
+
+  typedef int8_t    INT8;
+  typedef int16_t   INT16;
+  typedef int32_t   INT32;
+  typedef int64_t   INT64;
+  typedef uint8_t   UINT8;
+  typedef uint16_t  UINT16;
+  typedef uint32_t  UINT32;
+  typedef uint64_t  UINT64;
+
+  typedef float   FLOAT32;
+  typedef double  FLOAT64;
+
+  typedef char          CHAR;
+  typedef unsigned char UCHAR;
+
+  typedef ssize_t       SSIZE;
+  typedef UINT32        USIZE;
 #endif
 
 #define CPC_TRUE  1

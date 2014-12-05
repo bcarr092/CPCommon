@@ -102,7 +102,7 @@ cpc_convert_code_to_cstring  (
 {
   CHAR* code = NULL;
   
-  if( noErr != in_code )
+  if( 0 != in_code )
   {
     code = ( CHAR* ) CPC_MALLOC( CPC_CODE_STRING_LENGTH * sizeof( CHAR ) );
     
@@ -112,7 +112,7 @@ cpc_convert_code_to_cstring  (
           CPC_MEMSET( code, 0, CPC_CODE_STRING_LENGTH * sizeof( CHAR ) )
          )
       {
-        * ( UINT32 * ) ( code + 1 ) = CFSwapInt32HostToBig( in_code );
+        * ( UINT32 * ) ( code + 1 ) = CPC_HTONL( in_code );
         
         if( isprint( code[ 1 ] ) && isprint( code[ 2 ] )
            && isprint( code[ 3 ] ) && isprint( code[ 4 ] ) )
@@ -251,4 +251,97 @@ cpc_exit  (
            );
   
   CPC_EXIT( in_exit_code );
+}
+
+cpc_error_code
+cpc_strnlen (
+    CHAR*   in_string,
+    SSIZE*  io_length
+            )
+{
+  cpc_error_code result = CPC_ERROR_CODE_NO_ERROR;
+
+  if( NULL != in_string && NULL != io_length )
+  {
+    if( 0 < *io_length )
+    {
+      *io_length = CPC_STRNLEN( in_string, *io_length );
+    }
+    else
+    {
+      result = CPC_ERROR_CODE_INVALID_PARAMETER;
+    }
+  }
+  else
+  {
+    result = CPC_ERROR_CODE_NULL_POINTER;
+  }
+
+  return( result );
+}
+
+cpc_error_code
+cpc_memcpy  (
+    void* out_destination,
+    void* in_source,
+    SSIZE in_num_bytes
+            )
+{
+  cpc_error_code result = CPC_ERROR_CODE_NO_ERROR;
+
+  if( NULL != out_destination && NULL != in_source )
+  {
+    if( 0 < in_num_bytes )
+    {
+      CPC_MEMCPY( out_destination, in_source, in_num_bytes );
+    }
+    else
+    {
+      result = CPC_ERROR_CODE_INVALID_PARAMETER;
+    }
+  }
+  else
+  {
+    result = CPC_ERROR_CODE_NULL_POINTER;
+  }
+
+  return( result );
+}
+
+cpc_error_code
+cpc_safe_realloc  (
+    void**  io_pointer,
+    SSIZE   in_original_size,
+    SSIZE   in_new_size
+                  )
+{
+  cpc_error_code result = CPC_ERROR_CODE_NO_ERROR;
+
+  if( NULL != io_pointer )
+  {
+    void* destination = NULL;
+
+    result = cpc_safe_malloc( &destination, in_new_size );
+
+    if( CPC_ERROR_CODE_NO_ERROR == result )
+    {
+      if( NULL != *io_pointer && 0 < in_original_size )
+      {
+        result = cpc_memcpy( destination, *io_pointer, in_original_size );
+
+        if( CPC_ERROR_CODE_NO_ERROR == result )
+        {
+          cpc_safe_free( io_pointer );
+        }
+      }
+
+      *io_pointer = destination;
+    }
+  }
+  else
+  {
+    result = CPC_ERROR_CODE_NULL_POINTER;
+  }
+
+  return( result );
 }

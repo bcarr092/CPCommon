@@ -40,11 +40,11 @@
       #error "Unknown Apple platform"
     #endif
 #elif __ANDROID__
-  // Do nothing, we suppor this platform
+  /* Do nothing, we support this platform */
 #elif __linux
     #error "Linux is unsupported"
-#elif __unix // all unices not caught above
-    #error "General unix is unsupported"
+#elif __unix /* all unixes not caught above */
+    #error "General Unix is unsupported"
 #elif __posix
     #error "Platform unsupported"
 #endif
