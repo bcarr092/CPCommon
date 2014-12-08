@@ -57,9 +57,15 @@
  */
 #define CPC_HTONL( in_to_convert )  CFSwapInt32HostToBig( in_to_convert )
 
+/*! \def    CPC_STRNLEN
+    \brief  Save string length calculation.
+ */
 #define CPC_STRNLEN( in_string, in_max_length ) \
   strnlen( in_string, in_max_length )
 
+/*! \def    CPC_MEMCPY
+    \brief  Macro that maps to the platform specific memcpy function.
+ */
 #define CPC_MEMCPY( out_destination, in_source, in_num_bytes )  \
   memcpy( out_destination, in_source, in_num_bytes )
 

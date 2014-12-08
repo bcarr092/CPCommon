@@ -231,7 +231,7 @@ cpc_safe_malloc (
 /*! \fn     cpc_error_code cpc_safe_free (
               void** io_pointer
             )
-    \brief  This function is a safe impelementation of free. This function
+    \brief  This function is a safe implementation of free. This function
             will free io_pointer if it is a valid pointer and set it to NULL.
             If an error occurs the appropriate error code will be returned.
     
@@ -244,17 +244,52 @@ cpc_safe_free (
                void** io_pointer
                );
 
+/*! \fn     void cpc_exit  (
+             UINT32 in_exit_code
+            )
+    \brief  Function simply logs the exit code then exits the application.
+
+    \note   This function does not return.
+
+    \param  in_exit_code  The exit code to log before terminating.
+ */
 void
 cpc_exit  (
            UINT32 in_exit_code
            );
 
+/*! \fn     cpc_error_code cpc_strnlen (
+              CHAR*   in_string,
+              SSIZE*  io_length
+            )
+    \brief  Returns the length of the string up to a maximum.
+
+    \param  in_string The string whose length is to be computed.
+    \param  io_length On input the max length of in_string is passed in. On
+                      return io_length contains the lenght of in_string up to
+                      the max passed in. The length doees not count the null-
+                      terminator.
+    \return NO_ERROR if there is no error, an appropriate error code otherwise.
+ */
 cpc_error_code
 cpc_strnlen (
     CHAR*   in_string,
     SSIZE*  io_length
             );
 
+/*! \fn     cpc_error_code cpc_memcpy  (
+              void* out_destination,
+              void* in_source,
+              SSIZE in_num_bytes
+            )
+    \brief  Copies in_num_bytes from in_source to out_distination.
+
+    \param  out_destination The location to copy in_source to. Must not be null.
+    \param  in_source The location to copy from.
+    \param  in_num_bytes  The number of bytes to copy from in_source to
+                          out_destination.
+    \return NO_ERROR if there is no error, an appropriate error code otherwise.
+ */
 cpc_error_code
 cpc_memcpy  (
     void* out_destination,
@@ -262,6 +297,19 @@ cpc_memcpy  (
     SSIZE in_num_bytes
             );
 
+/*! \fn     cpc_error_code cpc_safe_realloc  (
+              void**  io_pointer,
+              SSIZE   in_original_size,
+              SSIZE   in_new_size
+            )
+    \brief  Reallocates io_pointer to a buffer of size in_new_size and copies
+            the contents of io_pointer to the new buffer. Frees the old buffer.
+
+    \param  io_pointer  Pointer to the buffer that is to be reallocated.
+    \param  in_original_size  The length of the buffer pointed to by io_pointer.
+    \param  in_new_size The desired size for io_pointer.
+    \return NO_ERROR if there is no error, an appropriate error code otherwise.
+ */
 cpc_error_code
 cpc_safe_realloc  (
     void**  io_pointer,

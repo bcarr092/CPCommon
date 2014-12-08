@@ -25,6 +25,10 @@
     \constant CPC_ERROR_CODE_INVALID_PERMISSIONS
                 Used when an operation cannot be performed because the correct
                 permissions have not been obtained.
+    \constant CPC_ERROR_CODE_INVALID_PARAMETER
+                Used when a parameter passed to a function is invalid.
+    \constant CPC_ERROR_CODE_API_ERROR
+                Used when a native OS API is called and it returns an error.
  */
 enum cpc_error_codes
 {
