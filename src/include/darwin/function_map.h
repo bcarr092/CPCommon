@@ -57,4 +57,10 @@
  */
 #define CPC_HTONL( in_to_convert )  CFSwapInt32HostToBig( in_to_convert )
 
+#define CPC_STRNLEN( in_string, in_max_length ) \
+  strnlen( in_string, in_max_length )
+
+#define CPC_MEMCPY( out_destination, in_source, in_num_bytes )  \
+  memcpy( out_destination, in_source, in_num_bytes )
+
 #endif /* __FUNCTION_MAP_H__ */
