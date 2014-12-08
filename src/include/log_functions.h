@@ -38,8 +38,8 @@
 #define CPC_LOG_BUFFER( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
           cpc_log_buffer( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
 
-/*! \fn     CPC_ERROR_CODE cpc_log  (
-              CPC_LOG_LEVEL in_log_level,
+/*! \fn     cpc_error_code cpc_log  (
+              cpc_log_level in_log_level,
               CHAR*         in_file,
               INT32         in_line_number,
               CHAR*         in_log_format,
@@ -66,8 +66,8 @@ cpc_log  (
           ...
           );
 
-/*! \fn     CPC_ERROR_CODE cpc_log_set_log_level (
-              CPC_LOG_LEVEL in_new_log_level
+/*! \fn     cpc_error_code cpc_log_set_log_level (
+              cpc_log_level in_new_log_level
             )
     \brief  Set the current log level to in_new_log_level
  
@@ -88,13 +88,13 @@ cpc_log_set_log_level (
 cpc_log_level
 cpc_log_get_current_log_level( void );
 
-/*! \fn     CHAR* cpc_log_level_to_string( CPC_LOG_LEVEL in_log_level )
+/*! \fn     CHAR* cpc_log_level_to_string ( cpc_log_level in_log_level )
     \brief  Translates the log level to its string representation
  
     \param  in_log_level  The log level to translate to a string.
     \return String representation of the given log level
  */
-char*
+CHAR*
 cpc_log_level_to_string (
                          cpc_log_level in_log_level
                          );

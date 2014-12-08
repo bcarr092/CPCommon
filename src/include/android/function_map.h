@@ -1,5 +1,5 @@
 /*! \file   function_map.h
-    \brief  File that maps the platform indepent functions to the platform
+    \brief  File that maps the platform independent functions to the platform
             specific functions by using macros.
  */
 #ifndef __FUNCTION_MAP_H__

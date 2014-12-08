@@ -73,7 +73,14 @@
   typedef UINT32        USIZE;
 #endif
 
+/*! \def    CPC_TRUE
+    \brief  True constant used by the CPCommon library.
+ */
 #define CPC_TRUE  1
+
+/*! \def    CPC_FALSE
+ \brief  False constant used by the CPCommon library.
+ */
 #define CPC_FALSE 0
 
 typedef UINT8 CPC_BOOL;

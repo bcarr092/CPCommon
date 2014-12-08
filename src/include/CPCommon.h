@@ -139,10 +139,10 @@ cpc_vfprintf (
               );
 
 /*! \fn     void cpc_print_code (
-              CPC_LOG_LEVEL  in_log_level,
+              cpc_log_level  in_log_level,
               CHAR*          in_file,
               INT32          in_line_number,
-              OSStatus       in_code
+              UINT32       in_code
             )
     \brief  Converts in_code to its string representation if possible and
             outputs it using the logger. This function tries to convert return

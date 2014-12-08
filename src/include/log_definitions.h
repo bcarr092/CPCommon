@@ -29,7 +29,7 @@ enum cpc_log_levels
   CPC_LOG_LEVEL_NO_LOGGING
 };
 
-/*! \var    CPC_LOG_LEVEL
+/*! \var    cpc_log_level
     \brief  A type definition for the log level.
  */
 typedef INT32 cpc_log_level;
