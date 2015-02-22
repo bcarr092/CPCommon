@@ -6,7 +6,7 @@
 #define __LOG_H__
 
 #include "cpcommon.h"
-#include "error_codes.h"
+#include "cpcommon_error_codes.h"
 
 /*! \def    CPC_LOG_STRING
     \brief  Logging function for strings. Used to log static messages.

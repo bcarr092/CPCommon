@@ -1,8 +1,8 @@
-/*! \file   error_codes.h
+/*! \file   cpcommon_error_codes.h
     \brief  File containing the enum of errors used by the logger.
  */
-#ifndef __ERROR_CODES_H__
-#define __ERROR_CODES_H__
+#ifndef __CPCOMMON_ERROR_CODES_H__
+#define __CPCOMMON_ERROR_CODES_H__
 
 #include "types.h"
 
@@ -48,4 +48,4 @@ enum cpc_error_codes
  */
 typedef INT32 cpc_error_code;
 
-#endif /* __ERROR_CODES_H__ */
+#endif /* __CPCOMMON_ERROR_CODES_H__ */

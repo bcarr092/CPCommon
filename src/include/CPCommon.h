@@ -14,7 +14,7 @@
 #include "types.h"
 #include "log_definitions.h"
 #include "log_functions.h"
-#include "error_codes.h"
+#include "cpcommon_error_codes.h"
 
 /*! \def    CPC_CODE_STRING_LENGTH
     \brief  The length of the string representation of a cpc code.
@@ -28,6 +28,28 @@
  */
 #define CPC_PRINT_CODE( in_log_level, in_code ) \
           cpc_print_code( in_log_level, __FILE__, __LINE__, in_code )
+
+/*! \def    CPC_MIN
+    \brief  Generic macro to ensure the correct min function is called for the
+            appropriate data type.
+ */
+#define CPC_MIN( type, a, b ) cpc_min_ ## type( a, b )
+
+/*! \fn     UINT32 cpc_min_UINT32  (
+              UINT32 a,
+              UINT32 b
+            )
+    \brief  Min function for the UINT32 data type.
+ 
+    \param  in_a  The number to compare to in_b
+    \param  in_b  The number to compare to in_a
+    \return The minimum of in_a and in_b, in_b if they are equal.
+ */
+UINT32
+cpc_min_UINT32  (
+                 UINT32 in_a,
+                 UINT32 in_b
+                 );
 
 /*! \fn     INT32 cpc_snprintf  (
               CHAR**        io_string,

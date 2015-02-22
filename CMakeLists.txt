@@ -23,7 +23,7 @@ list( APPEND HEADERS "${INCLUDE_DIR}/types.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/target.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/log_functions.h" )
 list( APPEND HEADERS "${INCLUDE_DIR}/log_definitions.h" )
-list( APPEND HEADERS "${INCLUDE_DIR}/error_codes.h" )
+list( APPEND HEADERS "${INCLUDE_DIR}/cpcommon_error_codes.h" )
 
 if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
   list( APPEND HEADERS "${INCLUDE_DIR}/darwin/function_map.h" )

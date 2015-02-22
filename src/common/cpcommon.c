@@ -345,3 +345,19 @@ cpc_safe_realloc  (
 
   return( result );
 }
+
+UINT32
+cpc_min_UINT32  (
+                 UINT32 in_a,
+                 UINT32 in_b
+                 )
+{
+  if( in_a < in_b )
+  {
+    return( in_a );
+  }
+  else
+  {
+    return( in_b );
+  }
+}
