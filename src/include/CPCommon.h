@@ -339,5 +339,10 @@ cpc_safe_realloc  (
     SSIZE   in_new_size
                   );
 
+CPC_BOOL
+cpc_check_if_file_exists  (
+                           CHAR* in_file_name
+                           );
+
 #endif /* __CPCOMMON_H_ */
 

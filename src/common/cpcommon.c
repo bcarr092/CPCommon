@@ -361,3 +361,27 @@ cpc_min_UINT32  (
     return( in_b );
   }
 }
+
+CPC_BOOL
+cpc_check_if_file_exists  (
+                           CHAR* in_file_name
+                           )
+{
+  CPC_BOOL return_value = CPC_FALSE;
+  FILE *file            = NULL;
+  
+  if( ( file = fopen( in_file_name, "r" ) ) )
+  {
+    CPC_LOG( CPC_LOG_LEVEL_TRACE, "File %s exists.", in_file_name );
+    
+    return_value = CPC_TRUE;
+    
+    fclose( file );
+  }
+  else
+  {
+    CPC_LOG( CPC_LOG_LEVEL_TRACE, "File %s does not exist.", in_file_name );
+  }
+  
+  return( return_value );
+}
