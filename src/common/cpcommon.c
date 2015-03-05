@@ -362,6 +362,22 @@ cpc_min_UINT32  (
   }
 }
 
+FLOAT32
+cpc_min_FLOAT32 (
+                 FLOAT32 in_a,
+                 FLOAT32 in_b
+                 )
+{
+  if( in_a < in_b )
+  {
+    return( in_a );
+  }
+  else
+  {
+    return( in_b );
+  }
+}
+
 CPC_BOOL
 cpc_check_if_file_exists  (
                            CHAR* in_file_name
@@ -384,4 +400,35 @@ cpc_check_if_file_exists  (
   }
   
   return( return_value );
+}
+
+FLOAT32
+cpc_bessel_i0 (
+               FLOAT32 in_number
+               )
+{
+  FLOAT32 ax  = 0;
+  FLOAT32 ans = 0;
+  FLOAT64 y   = 0;
+  
+  if( ( ax = fabs( in_number ) ) < 3.75 )
+  {
+    y =   in_number / 3.75;
+    y *=  y;
+    
+    ans =
+      1.0 + y * ( 3.5156229 + y * ( 3.0899424 + y * ( 1.2067492
+      + y * ( 0.2659732 + y * ( 0.360768e-1 + y * 0.45813e-2 ) ) ) ) );
+  }
+  else
+  {
+    y = 3.75 / ax;
+    
+    ans =
+      ( CPC_EXP( FLOAT32, ax ) / CPC_SQRT( FLOAT32, ax ) ) * ( 0.39894228
+      + y * ( 0.1328592e-1 + y * ( 0.225319e-2 + y * ( -0.157565e-2
+      + y * ( 0.916281e-2 + y * ( -0.2057706e-1 + y * ( 0.2635537e-1
+      + y * ( -0.1647633e-1 + y * 0.392377e-2 ) ) ) ) ) ) ) );
+  }
+  return ans;
 }

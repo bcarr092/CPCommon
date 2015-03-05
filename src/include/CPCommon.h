@@ -33,7 +33,37 @@
     \brief  Generic macro to ensure the correct min function is called for the
             appropriate data type.
  */
-#define CPC_MIN( type, a, b ) cpc_min_ ## type( a, b )
+#define CPC_MIN( type, in_a, in_b ) cpc_min_ ## type( in_a, in_b )
+
+/*! \def    CPC_POW
+    \brief  Generic macro to ensure the correct power function is called for the
+            appropriate data type.
+ */
+#define CPC_POW( type, in_base, in_power ) CPC_POW_ ## type( in_base, in_power )
+
+/*! \def    CPC_LOGARITHM_10
+    \brief  Generic macro to ensure the correct log10 function is called for the
+            appropriate data type.
+ */
+#define CPC_LOGARITHM_10( type, in_number ) CPC_LOG_10_ ## type( in_number )
+
+/*! \def    CPC_CEIL
+    \brief  Generic macro to ensure the correct ceil function is called for the
+            appropriate data type.
+ */
+#define CPC_CEIL( type, in_number ) CPC_CEIL_ ## type( in_number )
+
+/*! \def    CPC_SQRT
+    \brief  Generic macro to ensure the correct sqrt function is called for the
+            appropriate data type.
+ */
+#define CPC_SQRT( type, in_number ) CPC_SQRT_ ## type( in_number )
+
+/*! \def    CPC_EXP
+    \brief  Generic macro to ensure the correct exp function is called for the
+            appropriate data type.
+ */
+#define CPC_EXP( type, in_number ) CPC_EXP_ ## type( in_number )
 
 /*! \fn     UINT32 cpc_min_UINT32  (
               UINT32 a,
@@ -49,6 +79,22 @@ UINT32
 cpc_min_UINT32  (
                  UINT32 in_a,
                  UINT32 in_b
+                 );
+
+/*! \fn     FLOAT32 cpc_min_FLOAT32  (
+              FLOAT32 a,
+              FLOAT32 b
+            )
+    \brief  Min function for the FLOAT32 data type.
+
+    \param  in_a  The number to compare to in_b
+    \param  in_b  The number to compare to in_a
+    \return The minimum of in_a and in_b, in_b if they are equal.
+ */
+FLOAT32
+cpc_min_FLOAT32 (
+                 FLOAT32 in_a,
+                 FLOAT32 in_b
                  );
 
 /*! \fn     INT32 cpc_snprintf  (
@@ -339,10 +385,40 @@ cpc_safe_realloc  (
     SSIZE   in_new_size
                   );
 
+/*! \fn     CPC_BOOL cpc_check_if_file_exists  (
+              CHAR* in_file_name
+            )
+    \brief  Checks if in_file_name can be opened for reading and returns true
+            if it can.
+ 
+    \note This is not a comprehensive file check test. If the file exists but
+          the process checking doesn't have read permissions this function will
+          think the file does not exist.
+ 
+    \param  in_file_name  The file path to check for existence.
+    \return CPC_TRUE if the file can be opened for reading, CPC_FALSE otherwise.
+ */
 CPC_BOOL
 cpc_check_if_file_exists  (
                            CHAR* in_file_name
                            );
+
+/*! \fn     FLOAT32 cpc_bessel_i0 (
+              FLOAT32 in_number
+            )
+    \brief  Calculates the modified Bessel function of the 0th order I_0(x). The
+            implementation of this function was taken from:
+ 
+            Numerical recipes in C: the art of scientific computing by Press, et
+            al. (Chapter 6)
+ 
+    \param  in_number The input to the Bessel funciton.
+    \return The result of the modified Bessel function.
+ */
+FLOAT32
+cpc_bessel_i0 (
+               FLOAT32 in_number
+               );
 
 #endif /* __CPCOMMON_H_ */
 

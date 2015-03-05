@@ -69,4 +69,36 @@
 #define CPC_MEMCPY( out_destination, in_source, in_num_bytes )  \
   memcpy( out_destination, in_source, in_num_bytes )
 
+/*! \def    CPC_POW_FLOAT32
+    \brief  Macro that maps to the platform specific float power function.
+ */
+#define CPC_POW_FLOAT32( in_base, in_exponent ) \
+  powf( in_base, in_exponent )
+
+/*! \def    CPC_LOG_10_FLOAT32
+    \brief  Macro that maps to the platfrom specific float logarithm (base 10)
+            function.
+ */
+#define CPC_LOG_10_FLOAT32( in_number ) \
+  log10f( in_number )
+
+/*! \def    CPC_CEIL_FLOAT32
+    \brief  Macro that maps to the platform specific float ceiling function.
+ */
+#define CPC_CEIL_FLOAT32( in_number ) \
+  ceilf( in_number )
+
+/*! \def    CPC_SQRT_FLOAT32
+    \brief  Macro that maps to the platfrom specific float square root function.
+ */
+#define CPC_SQRT_FLOAT32( in_number ) \
+  sqrtf( in_number )
+
+/*! \def    CPC_EXP_FLOAT32
+    \brief  Macro that maps to the platfrom specific float exponent function,
+            i.e. e^in_number.
+ */
+#define CPC_EXP_FLOAT32( in_number ) \
+  expf( in_number )
+
 #endif /* __FUNCTION_MAP_H__ */
