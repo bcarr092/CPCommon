@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <limits.h>
 
 #include "target.h"
 
@@ -79,11 +80,32 @@
 #define CPC_TRUE  1
 
 /*! \def    CPC_FALSE
- \brief  False constant used by the CPCommon library.
+    \brief  False constant used by the CPCommon library.
  */
 #define CPC_FALSE 0
 
+/*! \var    CPC_BOOL
+    \brief  We use a char to store boolean values.
+ */
 typedef UINT8 CPC_BOOL;
+
+#define MAX_INT8  SCHAR_MAX
+#define MIN_INT8  SCHAR_MIN
+#define MAX_INT16 SHRT_MAX
+#define MIN_INT16 SHRT_MIN
+#define MAX_INT32 INT_MAX
+#define MIN_INT32 INT_MIN
+#define MAX_INT64 LONG_MAX
+#define MIN_INT64 LONG_MIN
+
+#define MAX_UINT8   UCHAR8
+#define MIN_UINT8   0
+#define MAX_UINT16  USHRT_MAX
+#define MIN_UINT16  0
+#define MAX_UINT32  UINT_MAX
+#define MIN_UINT32  0
+#define MAX_UINT64  ULONG_MAX
+#define MIN_UINT64  0
 
 #endif /* _TYPES_H_ */
 
