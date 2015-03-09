@@ -362,6 +362,22 @@ cpc_min_UINT32  (
   }
 }
 
+USIZE
+cpc_min_USIZE  (
+                 USIZE in_a,
+                 USIZE in_b
+                 )
+{
+  if( in_a < in_b )
+  {
+    return( in_a );
+  }
+  else
+  {
+    return( in_b );
+  }
+}
+
 FLOAT32
 cpc_min_FLOAT32 (
                  FLOAT32 in_a,

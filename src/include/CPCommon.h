@@ -88,8 +88,8 @@
 #define CPC_POW_FLOAT64( in_base, in_exponent ) pow( in_base, in_exponent )
 
 /*! \fn     UINT32 cpc_min_UINT32  (
-              UINT32 a,
-              UINT32 b
+              UINT32 in_a,
+              UINT32 in_b
             )
     \brief  Min function for the UINT32 data type.
  
@@ -101,6 +101,22 @@ UINT32
 cpc_min_UINT32  (
                  UINT32 in_a,
                  UINT32 in_b
+                 );
+
+/*! \fn     USIZE cpc_min_USIZE  (
+              USIZE in_a,
+              USIZE in_b
+            )
+    \brief  Min function for the UINT32 data type.
+
+    \param  in_a  The number to compare to in_b
+    \param  in_b  The number to compare to in_a
+    \return The minimum of in_a and in_b, in_b if they are equal.
+ */
+USIZE
+cpc_min_USIZE  (
+                 USIZE in_a,
+                 USIZE in_b
                  );
 
 /*! \fn     FLOAT32 cpc_min_FLOAT32  (
