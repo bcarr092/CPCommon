@@ -65,6 +65,12 @@
  */
 #define CPC_EXP( type, in_number ) CPC_EXP_ ## type( in_number )
 
+/*! \def    CPC_ROUND
+    \brief  Generic macro to ensure the correct round function is called for the
+            appropriate data type.
+ */
+#define CPC_ROUND( type, in_number ) CPC_ROUND_ ## type( in_number )
+
 /*! \fn     UINT32 cpc_min_UINT32  (
               UINT32 a,
               UINT32 b
@@ -95,6 +101,22 @@ FLOAT32
 cpc_min_FLOAT32 (
                  FLOAT32 in_a,
                  FLOAT32 in_b
+                 );
+
+/*! \fn     FLOAT64 cpc_min_FLOAT64  (
+              FLOAT64 in_a,
+              FLOAT64 in_b
+            )
+    \brief  Min function for the FLOAT64 data type.
+
+    \param  in_a  The number to compare to in_b
+    \param  in_b  The number to compare to in_a
+    \return The minimum of in_a and in_b, in_b if they are equal.
+ */
+FLOAT64
+cpc_min_FLOAT64 (
+                 FLOAT64 in_a,
+                 FLOAT64 in_b
                  );
 
 /*! \fn     INT32 cpc_snprintf  (
@@ -403,8 +425,8 @@ cpc_check_if_file_exists  (
                            CHAR* in_file_name
                            );
 
-/*! \fn     FLOAT32 cpc_bessel_i0 (
-              FLOAT32 in_number
+/*! \fn     FLOAT64 cpc_bessel_i0 (
+              FLOAT64 in_number
             )
     \brief  Calculates the modified Bessel function of the 0th order I_0(x). The
             implementation of this function was taken from:
@@ -415,9 +437,9 @@ cpc_check_if_file_exists  (
     \param  in_number The input to the Bessel funciton.
     \return The result of the modified Bessel function.
  */
-FLOAT32
+FLOAT64
 cpc_bessel_i0 (
-               FLOAT32 in_number
+               FLOAT64 in_number
                );
 
 #endif /* __CPCOMMON_H_ */

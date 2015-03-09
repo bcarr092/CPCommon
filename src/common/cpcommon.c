@@ -378,6 +378,22 @@ cpc_min_FLOAT32 (
   }
 }
 
+FLOAT64
+cpc_min_FLOAT64 (
+                 FLOAT64 in_a,
+                 FLOAT64 in_b
+                 )
+{
+  if( in_a < in_b )
+  {
+    return( in_a );
+  }
+  else
+  {
+    return( in_b );
+  }
+}
+
 CPC_BOOL
 cpc_check_if_file_exists  (
                            CHAR* in_file_name
@@ -402,13 +418,13 @@ cpc_check_if_file_exists  (
   return( return_value );
 }
 
-FLOAT32
+FLOAT64
 cpc_bessel_i0 (
-               FLOAT32 in_number
+               FLOAT64 in_number
                )
 {
-  FLOAT32 ax  = 0;
-  FLOAT32 ans = 0;
+  FLOAT64 ax  = 0;
+  FLOAT64 ans = 0;
   FLOAT64 y   = 0;
   
   if( ( ax = fabs( in_number ) ) < 3.75 )

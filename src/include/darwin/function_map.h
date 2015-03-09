@@ -75,6 +75,12 @@
 #define CPC_POW_FLOAT32( in_base, in_exponent ) \
   powf( in_base, in_exponent )
 
+/*! \def    CPC_POW_FLOAT64
+    \brief  Macro that maps to the platform specific double power function.
+ */
+#define CPC_POW_FLOAT64( in_base, in_exponent ) \
+  pow( in_base, in_exponent )
+
 /*! \def    CPC_LOG_10_FLOAT32
     \brief  Macro that maps to the platfrom specific float logarithm (base 10)
             function.
@@ -82,11 +88,24 @@
 #define CPC_LOG_10_FLOAT32( in_number ) \
   log10f( in_number )
 
+/*! \def    CPC_LOG_10_FLOAT64
+    \brief  Macro that maps to the platfrom specific double logarithm (base 10)
+            function.
+ */
+#define CPC_LOG_10_FLOAT64( in_number ) \
+  log10( in_number )
+
 /*! \def    CPC_CEIL_FLOAT32
     \brief  Macro that maps to the platform specific float ceiling function.
  */
 #define CPC_CEIL_FLOAT32( in_number ) \
   ceilf( in_number )
+
+/*! \def    CPC_CEIL_FLOAT64
+    \brief  Macro that maps to the platform specific double ceiling function.
+ */
+#define CPC_CEIL_FLOAT64( in_number ) \
+  ceil( in_number )
 
 /*! \def    CPC_SQRT_FLOAT32
     \brief  Macro that maps to the platfrom specific float square root function.
@@ -100,5 +119,11 @@
  */
 #define CPC_EXP_FLOAT32( in_number ) \
   expf( in_number )
+
+/*! \def    CPC_ROUND_FLOAT64
+    \brief  Macro that maps to the platform specific double round function.
+ */
+#define CPC_ROUND_FLOAT64( in_number ) \
+  round( in_number )
 
 #endif /* __FUNCTION_MAP_H__ */
