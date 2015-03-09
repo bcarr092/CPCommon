@@ -50,6 +50,64 @@ cpc_log  (
 }
 
 cpc_error_code
+cpc_log_buffer_FLOAT64  (
+                         cpc_log_level  in_log_level,
+                         CHAR*          in_file,
+                         INT32          in_line_number,
+                         CHAR*          in_label,
+                         FLOAT64*       in_buffer,
+                         UINT32         in_buffer_length,
+                         UINT32         in_num_columns
+                         )
+{
+  cpc_error_code error  = CPC_ERROR_CODE_NO_ERROR;
+  FILE* handle          = stdout;
+  
+  if( in_log_level == CPC_LOG_LEVEL_ERROR )
+  {
+    handle = stderr;
+  }
+  
+  if( g_current_log_level <= in_log_level )
+  {
+    error = cpc_fprintf (
+                         handle,
+                         "%s %s:%s:%d[%s]%s (%p)\n",
+                         __DATE__, __TIME__,
+                         in_file, in_line_number,
+                         cpc_log_level_to_string( in_log_level ),
+                         in_label,
+                         in_buffer
+                         );
+    
+    if( CPC_ERROR_CODE_NO_ERROR != error )
+    {
+      if( NULL != in_buffer )
+      {
+        for( UINT32 i = 0; i < in_buffer_length; i++ )
+        {
+          if( i % in_num_columns == 0 )
+          {
+            if( i != 0 )
+            {
+              cpc_fprintf( handle, "\n" );
+            }
+            
+            cpc_fprintf( handle, "0x%04x:\t", i );
+          }
+          
+          cpc_fprintf( handle, "%+1.6e, ",  in_buffer[ i ] );
+        }
+      }
+      
+      error = cpc_fprintf( handle, "\n" );
+    }
+  }
+  
+  return( error );
+}
+
+cpc_error_code
 cpc_log_buffer_FLOAT32  (
                          cpc_log_level  in_log_level,
                          CHAR*          in_file,

@@ -41,6 +41,9 @@
 #define CPC_LOG_BUFFER_FLOAT32( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
   cpc_log_buffer_FLOAT32( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
 
+#define CPC_LOG_BUFFER_FLOAT64( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
+  cpc_log_buffer_FLOAT64( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
+
 /*! \fn     cpc_error_code cpc_log  (
               cpc_log_level in_log_level,
               CHAR*         in_file,
@@ -164,6 +167,39 @@ cpc_log_buffer_FLOAT32  (
                          INT32          in_line_number,
                          CHAR*          in_label,
                          FLOAT32*       in_buffer,
+                         UINT32         in_buffer_length,
+                         UINT32         in_num_columns
+                         );
+
+/*! \fn     cpc_error_code cpc_log_buffer_FLOAT64  (
+              cpc_log_level  in_log_level,
+              CHAR*          in_file,
+              INT32          in_line_number,
+              CHAR*          in_label,
+              FLOAT64*       in_buffer,
+              UINT32         in_buffer_length,
+              UINT32         in_num_columns
+            )
+    \brief  Prints in_buffer in hexdump format for analysis.
+
+    \param  in_log_level    The log level the message should be logged at
+    \param  in_file         The file name cpc_log was called from
+    \param  in_line_number  The line number cpc_log was called on
+    \param  in_label        The label to print at the beginning of the log
+    entry.
+    \param  in_buffer The buffer to print in hexdump format.
+    \param  in_buffer_length  The number of entries in in_buffer.
+    \param  in_num_columns    The number of columns to display. One byte is
+    printed per column.
+    \return Either CPC_ERROR_CODE_NO_ERROR if no error is detected or an error.
+ */
+cpc_error_code
+cpc_log_buffer_FLOAT64  (
+                         cpc_log_level  in_log_level,
+                         CHAR*          in_file,
+                         INT32          in_line_number,
+                         CHAR*          in_label,
+                         FLOAT64*       in_buffer,
                          UINT32         in_buffer_length,
                          UINT32         in_num_columns
                          );
