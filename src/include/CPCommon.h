@@ -71,6 +71,22 @@
  */
 #define CPC_ROUND( type, in_number ) CPC_ROUND_ ## type( in_number )
 
+/*! \def    CPC_CEIL_FLOAT64
+    \brief  Macro that maps to the platform specific double ceiling function.
+ */
+#define CPC_CEIL_FLOAT64( in_number ) ceil( in_number )
+
+/*! \def    CPC_LOG_10_FLOAT64
+    \brief  Macro that maps to the platfrom specific double logarithm (base 10)
+            function.
+ */
+#define CPC_LOG_10_FLOAT64( in_number ) log10( in_number )
+
+/*! \def    CPC_POW_FLOAT64
+    \brief  Macro that maps to the platform specific double power function.
+ */
+#define CPC_POW_FLOAT64( in_base, in_exponent ) pow( in_base, in_exponent )
+
 /*! \fn     UINT32 cpc_min_UINT32  (
               UINT32 a,
               UINT32 b
