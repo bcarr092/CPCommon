@@ -53,6 +53,12 @@
  */
 #define CPC_CEIL( type, in_number ) CPC_CEIL_ ## type( in_number )
 
+/*! \def    CPC_FLOOR
+    \brief  Generic macro to ensure the correct ceil function is called for the
+            appropriate data type.
+ */
+#define CPC_FLOOR( type, in_number ) CPC_CEIL_ ## type( in_number )
+
 /*! \def    CPC_SQRT
     \brief  Generic macro to ensure the correct sqrt function is called for the
             appropriate data type.
@@ -75,6 +81,11 @@
     \brief  Macro that maps to the platform specific double ceiling function.
  */
 #define CPC_CEIL_FLOAT64( in_number ) ceil( in_number )
+
+/*! \def    CPC_FLOOR_FLOAT64
+    \brief  Macro that maps to the platform specific double ceiling function.
+ */
+#define CPC_FLOOR_FLOAT64( in_number ) ceil( in_number )
 
 /*! \def    CPC_LOG_10_FLOAT64
     \brief  Macro that maps to the platfrom specific double logarithm (base 10)
