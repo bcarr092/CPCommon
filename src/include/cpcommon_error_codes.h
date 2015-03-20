@@ -1,5 +1,7 @@
 /*! \file   cpcommon_error_codes.h
     \brief  File containing the enum of errors used by the logger.
+ 
+    \author Brent Carrara
  */
 #ifndef __CPCOMMON_ERROR_CODES_H__
 #define __CPCOMMON_ERROR_CODES_H__

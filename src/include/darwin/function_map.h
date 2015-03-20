@@ -1,6 +1,8 @@
 /*! \file   function_map.h
     \brief  File that maps the platform indepent functions to the platform
             specific functions by using macros.
+ 
+    \author Brent Carrara
  */
 #ifndef __FUNCTION_MAP_H__
 #define __FUNCTION_MAP_H__

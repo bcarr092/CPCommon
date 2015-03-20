@@ -2,6 +2,8 @@
     \brief  This file contains the definitions for the logger. All constants
             and typedefs have been placed in this file since they are used by
             both log_functions.h and cpcommon.h.
+ 
+    \author Brent Carrara
  */
 #ifndef _LOG_DEFINITIONS_H__
 #define _LOG_DEFINITIONS_H__

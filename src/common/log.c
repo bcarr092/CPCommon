@@ -1,3 +1,7 @@
+/*! \file   log.c
+ 
+    \author Brent Carrara
+ */
 #include "log_functions.h"
 
 static cpc_log_level g_current_log_level = CPC_LOG_LEVEL_TRACE;

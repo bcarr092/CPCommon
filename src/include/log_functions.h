@@ -1,6 +1,8 @@
 /*! \file   log_functions.h
     \brief  Logging functions that allow for messages to be logged at multiple
             different logging levels are defined in this file.
+ 
+    \author Brent Carrara
  */
 #ifndef __LOG_H__
 #define __LOG_H__

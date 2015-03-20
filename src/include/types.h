@@ -1,6 +1,8 @@
 /*! \file   types.h
-    \brief  This is the cross-platform and cross-architecture standard types file. This
-            header is automatically included by CPCommon.h.
+    \brief  This is the cross-platform and cross-architecture standard types
+            file. This header is automatically included by cpcommon.h.
+ 
+    \author Brent Carrara
 */
 
 #ifndef _TYPES_H_

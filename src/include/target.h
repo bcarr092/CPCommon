@@ -2,6 +2,8 @@
     \brief  File that determines the platform the cpcommon library is being
             built for. This file deteremines the specific platform through
             preprocessor defines.
+ 
+    \author Brent Carrara
  */
 #ifndef _TARGET_H_
 #define _TARGET_H_

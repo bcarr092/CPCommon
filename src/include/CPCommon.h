@@ -4,6 +4,8 @@
             platform specfic functionality should be defined in this library
             and implemented in a platform-specific way while presenting a
             common external interface.
+ 
+    \author Brent Carrara
  */
 #ifndef __CPCOMMON_H_
 #define __CPCOMMON_H_

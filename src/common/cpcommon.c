@@ -1,3 +1,7 @@
+/*! \file   cpcommon.c
+ 
+    \author Brent Carrara
+ */
 #include "cpcommon.h"
 
 INT32
