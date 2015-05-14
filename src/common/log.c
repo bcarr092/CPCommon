@@ -204,7 +204,7 @@ cpc_log_buffer  (
     {
       if( NULL != in_buffer )
       {
-        for( UINT32 i = 0; i < in_buffer_length; i++ )
+        for( INT32 i = 0; i < in_buffer_length; i++ )
         {
           if( i % in_num_columns == 0 )
           {

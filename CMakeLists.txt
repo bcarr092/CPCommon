@@ -43,6 +43,10 @@ elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
   message( STATUS "Android libraries: ${EXTRA_LIBS}" )
 
   list( APPEND HEADERS "${INCLUDE_DIR}/android/function_map.h" )
+elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
+  list( APPEND HEADERS "${INCLUDE_DIR}/windows/function_map.h" )
+
+list( APPEND SOURCES "${SOURCE_DIR}/windows/functions.c" )
 else()
   message( FATAL_ERROR "Unsupported platform: ${PLATFORM}" )
 endif()
@@ -94,11 +98,13 @@ if( DOXYGEN_FOUND )
   add_custom_target (
     doc_cpcommon
     ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/Doxyfile
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
     COMMENT "Generating API documentation with Doxygen" VERBATIM
                     )
 
-  file( MAKE_DIRECTORY ${DOXYGEN_OUTPUT} )
+  message( STATUS "Doxygen output is to to " ${DOXYGEN_OUTPUT} )
+
+  file( MAKE_DIRECTORY "${DOXYGEN_OUTPUT}" )
 
 endif(DOXYGEN_FOUND)
 

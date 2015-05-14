@@ -75,6 +75,31 @@
 
   typedef ssize_t       SSIZE;
   typedef UINT32        USIZE;
+#elif defined( __WIN32__ )
+  #include <Windows.h>
+  #include <windef.h>
+  #include <winnt.h>
+  #include <BaseTsd.h>
+
+  #include "windows/function_map.h"
+
+  typedef int8_t    INT8;
+  typedef int16_t   INT16;
+  typedef int32_t   INT32;
+  typedef int64_t   INT64;
+  typedef uint8_t   UINT8;
+  typedef uint16_t  UINT16;
+  typedef uint32_t  UINT32;
+  typedef uint64_t  UINT64;
+
+  typedef float   FLOAT32;
+  typedef double  FLOAT64;
+
+  typedef char          CHAR;
+  typedef unsigned char UCHAR;
+
+  typedef SSIZE_T       SSIZE;
+  typedef UINT32        USIZE;
 #endif
 
 /*! \def    CPC_TRUE

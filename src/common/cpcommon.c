@@ -170,7 +170,9 @@ cpc_strerror  (
                UINT32 in_error
                )
 {
-  return( CPC_STRERROR( in_error ) );
+  CHAR* error = CPC_STRERROR( in_error );
+
+  return( error );
 }
 
 cpc_error_code
@@ -421,8 +423,10 @@ cpc_check_if_file_exists  (
 {
   CPC_BOOL return_value = CPC_FALSE;
   FILE *file            = NULL;
+
+  CPC_FOPEN( file, in_file_name, "r" );
   
-  if( ( file = fopen( in_file_name, "r" ) ) )
+  if( file )
   {
     CPC_LOG( CPC_LOG_LEVEL_TRACE, "File %s exists.", in_file_name );
     
@@ -461,7 +465,7 @@ cpc_bessel_i0 (
     y = 3.75 / ax;
     
     ans =
-      ( CPC_EXP( FLOAT32, ax ) / CPC_SQRT( FLOAT32, ax ) ) * ( 0.39894228
+      ( CPC_EXP( FLOAT64, ax ) / CPC_SQRT( FLOAT64, ax ) ) * ( 0.39894228
       + y * ( 0.1328592e-1 + y * ( 0.225319e-2 + y * ( -0.157565e-2
       + y * ( 0.916281e-2 + y * ( -0.2057706e-1 + y * ( 0.2635537e-1
       + y * ( -0.1647633e-1 + y * 0.392377e-2 ) ) ) ) ) ) ) );
