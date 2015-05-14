@@ -13,11 +13,12 @@
 #include <stdint.h>
 #include <string.h>
 #include <limits.h>
-#include <math.h>
 
 #include "target.h"
 
 #if defined( __OSX__ ) || defined( __IOS__ )
+  #include <math.h>
+
   #include <CoreFoundation/CoreFoundation.h>
 
   #include "darwin/function_map.h"
@@ -51,6 +52,7 @@
   typedef ssize_t       SSIZE;
   typedef size_t        USIZE;
 #elif defined( __ANDROID__ )
+  #include <math.h>
   #include <errno.h>
   #include <ctype.h>
 
@@ -76,6 +78,9 @@
   typedef ssize_t       SSIZE;
   typedef UINT32        USIZE;
 #elif defined( __WIN32__ )
+  #define _USE_MATH_DEFINES
+  #include <math.h>
+
   #include <Windows.h>
   #include <windef.h>
   #include <winnt.h>
