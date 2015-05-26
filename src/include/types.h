@@ -104,7 +104,7 @@
   typedef unsigned char UCHAR;
 
   typedef SSIZE_T       SSIZE;
-  typedef UINT32        USIZE;
+  typedef size_t        USIZE;
 #endif
 
 /*! \def    CPC_TRUE

@@ -44,6 +44,18 @@ elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
 
   list( APPEND HEADERS "${INCLUDE_DIR}/android/function_map.h" )
 elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
+  find_library  (
+                  WS2_32_LIB
+                  Ws2_32 
+                )
+
+  set (
+        EXTRA_LIBS
+        ${WS2_32_LIB}
+      )
+
+  message( STATUS "Windows libraries: ${EXTRA_LIBS}" )
+
   list( APPEND HEADERS "${INCLUDE_DIR}/windows/function_map.h" )
 
   list( APPEND SOURCES "${SOURCE_DIR}/windows/functions.c" )
@@ -69,9 +81,9 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
           )
   
   include_directories( ${DARWINHELPER_INCLUDE_DIR} )
-elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
-  #target_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
 endif()
+
+target_link_libraries( ${PROJECT_NAME} ${EXTRA_LIBS} )
 
 install (
           TARGETS ${PROJECT_NAME}
