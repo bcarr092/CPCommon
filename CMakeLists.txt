@@ -46,7 +46,7 @@ elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
 elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
   list( APPEND HEADERS "${INCLUDE_DIR}/windows/function_map.h" )
 
-list( APPEND SOURCES "${SOURCE_DIR}/windows/functions.c" )
+  list( APPEND SOURCES "${SOURCE_DIR}/windows/functions.c" )
 else()
   message( FATAL_ERROR "Unsupported platform: ${PLATFORM}" )
 endif()
