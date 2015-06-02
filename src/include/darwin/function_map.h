@@ -96,6 +96,12 @@
 #define CPC_SQRT_FLOAT32( in_number ) \
   sqrtf( in_number )
 
+/*! \def    CPC_SQRT_FLOAT64
+    \brief  Macro that maps to the platfrom specific float square root function.
+ */
+#define CPC_SQRT_FLOAT64( in_number ) \
+  sqrt( in_number )
+
 /*! \def    CPC_EXP_FLOAT32
     \brief  Macro that maps to the platfrom specific float exponent function,
             i.e. e^in_number.
@@ -103,10 +109,23 @@
 #define CPC_EXP_FLOAT32( in_number ) \
   expf( in_number )
 
+/*! \def    CPC_EXP_FLOAT64
+    \brief  Macro that maps to the platfrom specific float exponent function,
+            i.e. e^in_number.
+ */
+#define CPC_EXP_FLOAT64( in_number ) \
+  exp( in_number )
+
 /*! \def    CPC_ROUND_FLOAT64
     \brief  Macro that maps to the platform specific double round function.
  */
 #define CPC_ROUND_FLOAT64( in_number ) \
   round( in_number )
+
+/*! \def    CPC_FOPEN
+ \brief  Macro that maps to the platform specific fopen_s function (safe fopen).
+ */
+#define CPC_FOPEN( out_file_pointer, in_file_name, in_access ) \
+  out_file_pointer = fopen( in_file_name, in_access )
 
 #endif /* __FUNCTION_MAP_H__ */
