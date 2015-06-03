@@ -123,7 +123,7 @@
   round( in_number )
 
 /*! \def    CPC_FOPEN
- \brief  Macro that maps to the platform specific fopen_s function (safe fopen).
+    \brief  Macro that maps to the platform specific fopen_s function (safe fopen).
  */
 #define CPC_FOPEN( out_file_pointer, in_file_name, in_access ) \
   out_file_pointer = fopen( in_file_name, in_access )
