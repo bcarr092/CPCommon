@@ -7,6 +7,8 @@
 #ifndef __FUNCTION_MAP_H__
 #define __FUNCTION_MAP_H__
 
+#include "types.h"
+
 #define CPC_ERRNO errno
 
 /*! \def    CPC_VSNPRINTF

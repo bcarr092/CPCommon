@@ -4,6 +4,65 @@
  */
 #include "cpcommon.h"
 
+cpcommon_state g_cpcommon_state = CPCOMMON_STATE_NOT_INITIALIZED;
+
+void
+cpc_initialize( void )
+{
+  switch( g_cpcommon_state )
+  {
+  case CPCOMMON_STATE_NOT_INITIALIZED:
+    g_cpcommon_state = CPCOMMON_STATE_INITIALIZED;
+
+    platform_initialize();
+
+    break;
+  case CPCOMMON_STATE_INITIALIZED:
+  case CPCOMMON_STATE_TERMINATED:
+    CPC_LOG_STRING(
+      CPC_LOG_LEVEL_WARN,
+      "CPCommon has already been initialized."
+      );
+    break;
+  }
+}
+
+void
+cpc_terminate( void )
+{
+  switch( g_cpcommon_state )
+  {
+  case CPCOMMON_STATE_NOT_INITIALIZED:
+    CPC_LOG_STRING( CPC_LOG_LEVEL_ERROR, "CPCommon has not been initialized" );
+    break;
+  case CPCOMMON_STATE_TERMINATED:
+    CPC_LOG_STRING(
+      CPC_LOG_LEVEL_WARN,
+      "CAHAL has already been terminated"
+      );
+    break;
+  case CPCOMMON_STATE_INITIALIZED:
+    g_cpcommon_state = CPCOMMON_STATE_TERMINATED;
+
+    platform_terminate();
+
+    break;
+  }
+}
+
+CPC_BOOL
+cpc_is_initialized( void )
+{
+  if( CPCOMMON_STATE_INITIALIZED == g_cpcommon_state )
+  {
+    return( CPC_TRUE );
+  }
+  else
+  {
+    return( CPC_FALSE );
+  }
+}
+
 INT32
 cpc_snprintf  (
                CHAR**        io_string,
@@ -17,7 +76,8 @@ cpc_snprintf  (
   
   va_start( list, in_string_format );
   
-  *io_string = ( CHAR * ) CPC_MALLOC( sizeof( CHAR ) * in_string_length );
+  *io_string =
+    ( CHAR * ) CPC_MALLOC( sizeof( CHAR ) * ( in_string_length  + 1 ) );
   
   if( NULL != *io_string )
   {

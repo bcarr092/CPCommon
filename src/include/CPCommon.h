@@ -105,6 +105,47 @@ extern "C"
       */
 #define CPC_POW_FLOAT64( in_base, in_exponent ) pow( in_base, in_exponent )
 
+  /*! \enum  cpcommon_states
+  *  \brief  The states that the library goes through. The state transition
+  *          diagram is as follows NOT_INITIALIZED -> INITIALIZED -> TERMINATED.
+  *          Currently, going back to NOT_INITIALIZED after TERMINATED is not
+  *          supported.
+  */
+  enum cpcommon_states
+  {
+    CPCOMMON_STATE_NOT_INITIALIZED = 0,
+    CPCOMMON_STATE_INITIALIZED,
+    CPCOMMON_STATE_TERMINATED
+  };
+
+  /*! \var    cpcommon_state
+  *  \brief  The global CPCommon library state variable
+  */
+  typedef UINT32 cpcommon_state;
+
+  /*! \var    g_cpcommon_state
+  *  \brief  This is the global state of the CPCommon library. This value should
+  *          never be modified directly. It is updated automatically through
+  *          specific API calls. To initialize the library call cpc_initialize,
+  *          when done with the library call cpc_terminate.
+  */
+  extern cpcommon_state g_cpcommon_state;
+
+  void
+  cpc_initialize( void );
+
+  void
+  cpc_terminate( void );
+
+  CPC_BOOL
+  cpc_is_initialized( void );
+
+  void
+  platform_initialize( void );
+
+  void
+  platform_terminate( void );
+
   /*! \fn     UINT32 cpc_min_UINT32  (
                 UINT32 in_a,
                 UINT32 in_b

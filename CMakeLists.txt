@@ -48,11 +48,20 @@ elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
                   WS2_32_LIB
                   Ws2_32 
                 )
+  find_library  (
+                  MSVCRTD_LIB
+                  msvcrtd
+                  HINTS "${CMAKE_FIND_ROOT_PATH}/lib"
+                )
 
   set (
         EXTRA_LIBS
         ${WS2_32_LIB}
       )
+
+  if( DEFINED MSVCRTD_LIB )
+    list( APPEND EXTRA_LIBS ${MSVCRTD_LIB} )
+  endif()
 
   message( STATUS "Windows libraries: ${EXTRA_LIBS}" )
 

@@ -78,6 +78,16 @@
   typedef ssize_t       SSIZE;
   typedef UINT32        USIZE;
 #elif defined( __WIN32__ )
+  #ifndef _DEBUG
+    #define _DEBUG
+  #endif
+
+  #ifdef _DEBUG
+    #define _CRTDBG_MAP_ALLOC
+    #include <stdlib.h>
+    #include <crtdbg.h>
+  #endif
+
   #define _USE_MATH_DEFINES
   #include <math.h>
 
