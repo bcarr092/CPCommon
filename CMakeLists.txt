@@ -27,6 +27,8 @@ list( APPEND HEADERS "${INCLUDE_DIR}/cpcommon_error_codes.h" )
 
 if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
   list( APPEND HEADERS "${INCLUDE_DIR}/darwin/function_map.h" )
+
+  list( APPEND SOURCES "${SOURCE_DIR}/darwin/functions.c" )
 elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
   find_library  (
                   MATH_LIB
@@ -43,6 +45,8 @@ elseif( ${PLATFORM} STREQUAL "Generic" AND ${TARGET} MATCHES "^android" )
   message( STATUS "Android libraries: ${EXTRA_LIBS}" )
 
   list( APPEND HEADERS "${INCLUDE_DIR}/android/function_map.h" )
+
+  list( APPEND SOURCES "${SOURCE_DIR}/android/functions.c" )
 elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
   find_library  (
                   WS2_32_LIB
