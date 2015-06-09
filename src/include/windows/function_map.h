@@ -38,12 +38,19 @@
 /*! \def    CPC_FOPEN
     \brief  Macro that maps to the platform specific fopen_s function (safe fopen).
   */
-#define CPC_FOPEN( out_file_pointer, in_file_name, in_access ) fopen_s( &out_file_pointer, in_file_name, in_access )
+#define CPC_FOPEN( out_file_pointer, in_file_name, in_access ) \
+   fopen_s( &out_file_pointer, in_file_name, in_access )
 
+/*!   \fn     char* win_strerror( int in_error )
+      \brief  Returns the Windows error string associated with in_error.
+
+      \param  in_error  The error code to display the string for.
+      \return A string representation of in_error.
+ */
 char*
 win_strerror(
-int in_error
-);
+  int in_error
+            );
 
 /*! \def    CPC_MALLOC
     \brief  Macro that maps to the platform specific malloc function.

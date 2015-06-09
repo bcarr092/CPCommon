@@ -131,18 +131,33 @@ extern "C"
   */
   extern cpcommon_state g_cpcommon_state;
 
+  /*! \fn     void cpc_initialize( void )
+      \brief  Initializes the library.
+   */
   void
   cpc_initialize( void );
 
+  /*! \fn     void cpc_terminate( void )
+      \brief  Terminates the library.
+  */
   void
   cpc_terminate( void );
 
+  /*! \fn     CPC_BOOL cpc_is_initialized( void )
+      \brief  Returns CPC_TRUE if the library is initialized CPC_FALSE otherwise.
+   */
   CPC_BOOL
   cpc_is_initialized( void );
 
+  /*! \fn     void platform_initialize( void )
+      \brief  Performs platform specific initialization.
+   */
   void
   platform_initialize( void );
 
+  /*! \fn     void platform_terminate( void )
+      \brief  Performs platform specific termination of the library.
+   */
   void
   platform_terminate( void );
 
