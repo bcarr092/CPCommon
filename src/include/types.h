@@ -79,7 +79,7 @@
   typedef UINT32        USIZE;
 #elif defined( __WIN32__ )
   #ifndef _DEBUG
-    #define _DEBUG
+    //#define _DEBUG
   #endif
 
   #ifdef _DEBUG

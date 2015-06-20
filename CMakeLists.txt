@@ -52,11 +52,11 @@ elseif( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
                   WS2_32_LIB
                   Ws2_32 
                 )
-  find_library  (
-                  MSVCRTD_LIB
-                  msvcrtd
-                  HINTS "${CMAKE_FIND_ROOT_PATH}/lib"
-                )
+  #find_library  (
+                  #MSVCRTD_LIB
+                  #msvcrtd
+                  #HINTS "${CMAKE_FIND_ROOT_PATH}/lib"
+                #)
 
   set (
         EXTRA_LIBS
