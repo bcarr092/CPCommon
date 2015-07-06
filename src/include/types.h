@@ -140,6 +140,8 @@ typedef UINT8 CPC_BOOL;
 #define MIN_INT32 INT_MIN
 #define MAX_INT64 LONG_MAX
 #define MIN_INT64 LONG_MIN
+#define MAX_USIZE SIZE_MAX
+#define MIN_USIZE SIZE_MIN
 
 #define MAX_UINT8   UCHAR8
 #define MIN_UINT8   0
