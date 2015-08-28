@@ -1,4 +1,4 @@
-/*! \file   function_map.h
+/*! \file   windows/function_map.h
     \brief  File that maps the platform indepent functions to the platform
             specific functions by using macros.
  
@@ -9,6 +9,9 @@
 
 #include "types.h"
 
+/*! \def    CPC_ERRNO
+    \brief  Alias for the errno variable.
+ */
 #define CPC_ERRNO errno
 
 /*! \def    CPC_VSNPRINTF

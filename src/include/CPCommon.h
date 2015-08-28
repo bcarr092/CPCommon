@@ -194,8 +194,8 @@ extern "C"
                    );
 
   /*! \fn     FLOAT32 cpc_min_FLOAT32  (
-                FLOAT32 a,
-                FLOAT32 b
+                FLOAT32 in_a,
+                FLOAT32 in_b
                 )
                 \brief  Min function for the FLOAT32 data type.
 
@@ -272,18 +272,18 @@ extern "C"
   );
 
   /*! \fn     INT32 cpc_vprintf  (
-              const CHAR* in_string_foramt,
-              va_list     in_parameters
+              const CHAR* in_string_format,
+              va_list     in_list
               )
-              \brief  Cross-platform wrapper for vprintf
+      \brief  Cross-platform wrapper for vprintf
 
-              \param  in_string_format  The printf formatted format string.
-              \param  in_list The variable length argument list to use in formatting the
-              output string.
-              \return Returns either the number of characters output, or a negative
-              number indicating an error. See the platform specific descrtiption
-              of errors for vprintf (or equivalent).
-              */
+      \param  in_string_format  The printf formatted format string.
+      \param  in_list The variable length argument list to use in formatting the
+      output string.
+      \return Returns either the number of characters output, or a negative
+      number indicating an error. See the platform specific descrtiption
+      of errors for vprintf (or equivalent).
+   */
   INT32
   cpc_vprintf(
                 const CHAR* in_string_format,
@@ -315,18 +315,18 @@ extern "C"
   /*! \fn     INT32 cpc_vfprintf (
               FILE*       in_handle,
               const CHAR* in_string_format,
-              va_list     in_parameters
+              va_list     in_list
               )
-              \brief  Cross-platform wrapper for vfprintf
+      \brief  Cross-platform wrapper for vfprintf
 
-              \param  in_handle The file handle to write the log to.
-              \param  in_string_format  The printf formatted format string.
-              \param  in_list   The variable length argument list to use in formatting
-              the output print string.
-              \return Returns either the number of characters output, or a negative
-              number indicating an error. See the platform specific descrtiption
-              of errors for vfprintf (or equivalent).
-              */
+      \param  in_handle The file handle to write the log to.
+      \param  in_string_format  The printf formatted format string.
+      \param  in_list   The variable length argument list to use in formatting
+      the output print string.
+      \return Returns either the number of characters output, or a negative
+      number indicating an error. See the platform specific descrtiption
+      of errors for vfprintf (or equivalent).
+   */
   INT32
   cpc_vfprintf(
                 FILE*       in_handle,
@@ -405,19 +405,19 @@ extern "C"
 
   /*! \fn     cpc_error_code cpc_safe_malloc (
                 void** out_pointer,
-                SSIZE  in_pointer_size
+                SSIZE  in_buffer_size
                 )
-                \brief  Creates a safe implementation of malloc. This function will safely
-                allocate a new memory buffer, zero it out and return it. If either
-                the malloc or memset fail this function will return an error.
-                CPC_ERROR_CODE_NO_ERROR is returned otherwise.
+      \brief  Creates a safe implementation of malloc. This function will safely
+              allocate a new memory buffer, zero it out and return it. If either
+              the malloc or memset fail this function will return an error.
+              CPC_ERROR_CODE_NO_ERROR is returned otherwise.
 
-                \param  out_pointer Upon return out_pointer will point to a newly
-                allocated buffer or NULL if an error occurred.
-                \param  in_buffer_size  The size of the buffer to create.
-                \return CPC_ERROR_CODE_NO_ERROR(0) if no error has occurred, an error code
-                otherwise.
-                */
+      \param  out_pointer Upon return out_pointer will point to a newly
+                          allocated buffer or NULL if an error occurred.
+      \param  in_buffer_size  The size of the buffer to create.
+      \return CPC_ERROR_CODE_NO_ERROR(0) if no error has occurred, an error code
+      otherwise.
+*/
   cpc_error_code
   cpc_safe_malloc(
                    void** out_pointer,

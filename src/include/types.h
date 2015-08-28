@@ -132,24 +132,94 @@
  */
 typedef UINT8 CPC_BOOL;
 
+/*! \def    MAX_INT8
+    \brief  Max signed byte value.
+ */
 #define MAX_INT8  SCHAR_MAX
-#define MIN_INT8  SCHAR_MIN
-#define MAX_INT16 SHRT_MAX
-#define MIN_INT16 SHRT_MIN
-#define MAX_INT32 INT_MAX
-#define MIN_INT32 INT_MIN
-#define MAX_INT64 LONG_MAX
-#define MIN_INT64 LONG_MIN
-#define MAX_USIZE SIZE_MAX
-#define MIN_USIZE SIZE_MIN
 
+/*! \def    MIN_INT8
+    \brief  Min signed byte value.
+ */
+#define MIN_INT8  SCHAR_MIN
+
+/*! \def    MAX_INT16
+    \brief  Max signed short value.
+ */
+#define MAX_INT16 SHRT_MAX
+
+/*! \def    MIN_INT16
+    \brief  Min signed short value.
+ */
+#define MIN_INT16 SHRT_MIN
+
+/*! \def    MAX_INT32
+    \brief  Max signed 32-bit int value.
+ */
+#define MAX_INT32 INT_MAX
+
+/*! \def    MIN_INT32
+    \brief  Min signed 32-bit int value.
+ */
+#define MIN_INT32 INT_MIN
+
+/*! \def    MAX_INT64
+    \brief  Max signed 64-bit long value.
+ */
+#define MAX_INT64 LONG_MAX
+
+/*! \def    MIN_INT64
+    \brief  Min signed 64-bit long value.
+ */
+#define MIN_INT64 LONG_MIN
+
+/*! \def    MAX_USIZE
+    \brief  Max unsigned size value.
+ */
+#define MAX_USIZE SIZE_MAX
+
+/*! \def    MIN_USIZE
+    \brief  Min unsigned size value.
+ */
+#define MIN_USIZE 0
+
+/*! \def    MAX_UINT8
+    \brief  Max unsigned byte value.
+ */
 #define MAX_UINT8   UCHAR8
+
+/*! \def    MIN_UINT8
+    \brief  Min unsigned byte value.
+ */
 #define MIN_UINT8   0
+
+/*! \def    MAX_UINT16
+    \brief  Max unsigned short value.
+ */
 #define MAX_UINT16  USHRT_MAX
+
+/*! \def    MIN_UINT16
+    \brief  Min unsigned short value.
+ */
 #define MIN_UINT16  0
+
+/*! \def    MAX_UINT32
+    \brief  Max unsigned 32-bit int value.
+ */
 #define MAX_UINT32  UINT_MAX
+
+/*! \def    MIN_UINT32
+    \brief  Max unsigned 32-bit int value.
+ */
 #define MIN_UINT32  0
+
+/*! \def    MAX_UINT64
+    \brief  Max unsigned 64-bit long value.
+ */
 #define MAX_UINT64  ULONG_MAX
+
+/*! \def    MIN_UINT64
+    \brief  Min unsigned 64-bit long value.
+ */
 #define MIN_UINT64  0
 
 #endif /* _TYPES_H_ */

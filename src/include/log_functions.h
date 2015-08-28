@@ -37,17 +37,29 @@ extern "C"
   cpc_log( in_log_level, __FILE__, __LINE__, in_log_format, __VA_ARGS__ )
 
   /*! \def    CPC_LOG_BUFFER
-      \brief  Logging for function that brints buffers in a hexdump format for
-      analysis. This macro should be used instead of calling the
-      cpc_log_buffer function directly as this function will preserve the
-      file and line number.
-      */
+      \brief  Logging for function that prints char buffers in a hexdump format for
+              analysis. This macro should be used instead of calling the
+              cpc_log_buffer function directly as this function will preserve the
+              file and line number.
+  */
 #define CPC_LOG_BUFFER( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
   cpc_log_buffer( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
 
+  /*! \def    CPC_LOG_BUFFER_FLOAT32
+      \brief  Logging for function that prints float buffers in a hexdump format for
+              analysis. This macro should be used instead of calling the
+              cpc_log_buffer function directly as this function will preserve the
+              file and line number.
+   */
 #define CPC_LOG_BUFFER_FLOAT32( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
   cpc_log_buffer_FLOAT32( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
 
+  /*! \def    CPC_LOG_BUFFER_FLOAT64
+      \brief  Logging for function that prints float buffers in a hexdump format for
+              analysis. This macro should be used instead of calling the
+              cpc_log_buffer function directly as this function will preserve the
+              file and line number.
+   */
 #define CPC_LOG_BUFFER_FLOAT64( in_log_level, in_label, in_buffer, in_buffer_length, in_num_columns ) \
   cpc_log_buffer_FLOAT64( in_log_level, __FILE__, __LINE__, in_label, in_buffer, in_buffer_length, in_num_columns )
 

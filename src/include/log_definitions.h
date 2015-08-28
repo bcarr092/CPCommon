@@ -8,11 +8,34 @@
 #ifndef _LOG_DEFINITIONS_H__
 #define _LOG_DEFINITIONS_H__
 
+/*! \def    CPC_LOG_LEVEL_TRACE_STRING
+    \brief  String for debug TRACE level.
+ */
 #define CPC_LOG_LEVEL_TRACE_STRING  "TRACE"
+
+/*! \def    CPC_LOG_LEVEL_DEBUG_STRING
+    \brief  String for debug DEBUG level.
+ */
 #define CPC_LOG_LEVEL_DEBUG_STRING  "DEBUG"
+
+/*! \def    CPC_LOG_LEVEL_INFO_STRING
+    \brief  String for debug INFO level.
+ */
 #define CPC_LOG_LEVEL_INFO_STRING   "INFO"
+
+/*! \def    CPC_LOG_LEVEL_WARN_STRING
+    \brief  String for debug WARN level.
+ */
 #define CPC_LOG_LEVEL_WARN_STRING   "WARN"
+
+/*! \def    CPC_LOG_LEVEL_ERROR_STRING
+    \brief  String for debug ERROR level.
+ */
 #define CPC_LOG_LEVEL_ERROR_STRING  "ERROR"
+
+/*! \def    CPC_LOG_LEVEL_NO_STRING
+    \brief  String for debug DISABLED level.
+ */
 #define CPC_LOG_LEVEL_NO_STRING     "Disabled"
 
 /*! \enum   cpc_log_levels

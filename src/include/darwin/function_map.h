@@ -1,4 +1,4 @@
-/*! \file   function_map.h
+/*! \file   darwin/function_map.h
     \brief  File that maps the platform indepent functions to the platform
             specific functions by using macros.
  
@@ -7,6 +7,9 @@
 #ifndef __FUNCTION_MAP_H__
 #define __FUNCTION_MAP_H__
 
+/*! \def    CPC_ERRNO
+    \brief  Alias for the errno variable.
+ */
 #define CPC_ERRNO errno
 
 /*! \def    CPC_VSNPRINTF
