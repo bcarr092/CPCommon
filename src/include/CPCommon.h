@@ -92,7 +92,7 @@ extern "C"
   /*! \def    CPC_FLOOR_FLOAT64
       \brief  Macro that maps to the platform specific double ceiling function.
       */
-#define CPC_FLOOR_FLOAT64( in_number ) ceil( in_number )
+#define CPC_FLOOR_FLOAT64( in_number ) floor( in_number )
 
   /*! \def    CPC_LOG_10_FLOAT64
       \brief  Macro that maps to the platfrom specific double logarithm (base 10)
