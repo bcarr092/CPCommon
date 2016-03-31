@@ -30,7 +30,7 @@
     typedef int64_t   INT64;
     typedef uint8_t   UINT8;
     typedef uint16_t  UINT16;
-    typedef uint32_t  UINT32;
+    typedef UInt32    UINT32;
     typedef uint64_t  UINT64;
   #else
     typedef SInt8    INT8;
